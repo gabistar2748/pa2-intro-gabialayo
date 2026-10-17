@@ -1,0 +1,158 @@
+/* Fuente Montserrat local (licencia OFL en /fonts) */
+@font-face{font-family:"Montserrat";font-weight:400;font-style:normal;font-display:swap;src:url("../fonts/Montserrat-Regular.woff2") format("woff2")}
+@font-face{font-family:"Montserrat";font-weight:500;font-style:normal;font-display:swap;src:url("../fonts/Montserrat-Medium.woff2") format("woff2")}
+@font-face{font-family:"Montserrat";font-weight:600;font-style:normal;font-display:swap;src:url("../fonts/Montserrat-SemiBold.woff2") format("woff2")}
+@font-face{font-family:"Montserrat";font-weight:700;font-style:normal;font-display:swap;src:url("../fonts/Montserrat-Bold.woff2") format("woff2")}
+@font-face{font-family:"Montserrat";font-weight:800;font-style:normal;font-display:swap;src:url("../fonts/Montserrat-ExtraBold.woff2") format("woff2")}
+
+  :root{
+    --navy:#0b2545;
+    --azul:#0b6bff;
+    --celeste:#4cc9ff;
+    --neon:#00d9ff;
+    --error:#d90429;
+    --vidrio:rgba(240,248,255,.62);
+    --panel:rgba(255,255,255,.50);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; min-height:100vh;
+    font-family:"Montserrat",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    color:var(--navy);
+    background:linear-gradient(160deg,#1e88e5,#64b5f6 55%,#bbdefb);
+  }
+
+  /* ---------- Video de fondo ---------- */
+  .fondo{position:fixed; inset:0; width:100%; height:100%; object-fit:cover; z-index:-2}
+  .velo{position:fixed; inset:0; z-index:-1;
+        background:linear-gradient(180deg,rgba(8,60,150,.10),rgba(5,40,110,.35))}
+  @media (prefers-reduced-motion:reduce){ .fondo{display:none} }
+
+  /* ---------- Tarjeta principal (vidrio) ---------- */
+  main{max-width:1080px; margin:0 auto; padding:2rem 16px 3rem}
+  .tarjeta{
+    background:linear-gradient(180deg,var(--vidrio),rgba(200,225,255,.55));
+    border:1px solid rgba(255,255,255,.7);
+    border-radius:28px;
+    padding:clamp(1.2rem,3vw,2.4rem);
+    box-shadow:0 20px 60px rgba(5,40,110,.35);
+    backdrop-filter:blur(14px) saturate(130%);
+    -webkit-backdrop-filter:blur(14px) saturate(130%);
+  }
+
+  /* ---------- Encabezado ---------- */
+  header{text-align:center; margin-bottom:1.6rem}
+  header img{
+    display:block; margin:0 auto; width:120px; height:120px; object-fit:contain; font-size:0; color:transparent;
+    background:#fff; border-radius:50%; padding:4px;
+    box-shadow:0 0 0 4px rgba(255,255,255,.7),0 0 24px rgba(0,217,255,.6);
+  }
+  h1{
+    margin:.8rem 0 .2rem; font-size:clamp(1.7rem,4.5vw,2.8rem);
+    font-weight:800; letter-spacing:.04em; color:var(--navy);
+  }
+  header p{margin:0; font-weight:600; font-size:clamp(.85rem,2vw,1.1rem); color:#14407a}
+
+  /* ---------- Columnas ---------- */
+  .columnas{display:grid; grid-template-columns:1fr 1fr; gap:1.4rem; align-items:start}
+  .panel{background:var(--panel); border:1px solid rgba(255,255,255,.7);
+         border-radius:20px; padding:1.3rem 1.3rem 1.1rem}
+  .panel h2{margin:0 0 1rem; font-size:1.05rem; letter-spacing:.06em; text-transform:uppercase;
+            color:var(--azul); border-bottom:2px solid rgba(11,107,255,.25); padding-bottom:.5rem}
+
+  .campo{margin:0 0 1rem; border:0; padding:0; min-width:0}
+  .campo > label, .campo > legend{display:block; font-weight:700; font-size:.88rem; margin-bottom:.35rem; padding:0}
+  .opciones{display:flex; flex-wrap:wrap; gap:.5rem 1.2rem}
+  .opciones label{display:inline-flex; align-items:center; gap:.45rem; font-weight:500; cursor:pointer}
+  input[type=radio], input[type=checkbox]{width:1.1rem; height:1.1rem; accent-color:var(--azul); cursor:pointer}
+
+  input[type=text], input[type=tel], input[type=date]{
+    width:100%; font:inherit; color:var(--navy);
+    padding:.65rem .8rem; border-radius:12px;
+    background:rgba(255,255,255,.85); border:2px solid rgba(11,107,255,.25);
+    outline:none; transition:border-color .2s, box-shadow .2s;
+  }
+  input[readonly]{background:rgba(255,255,255,.45); font-weight:700; cursor:default}
+
+  /* Bordes fosforescentes al recibir el foco */
+  input[type=text]:focus, input[type=tel]:focus, input[type=date]:focus{
+    border-color:var(--neon);
+    box-shadow:0 0 0 3px rgba(0,217,255,.30), 0 0 12px var(--neon), 0 0 26px rgba(0,217,255,.55);
+  }
+  input[type=radio]:focus-visible, input[type=checkbox]:focus-visible{
+    outline:2px solid var(--neon); outline-offset:3px; box-shadow:0 0 12px var(--neon);
+  }
+
+  .fijo{display:grid; grid-template-columns:5.5rem 1fr; gap:.6rem}
+  .fijo small{display:block; font-size:.72rem; font-weight:600; color:#14407a; margin-bottom:.2rem}
+
+  /* ---------- Cursos ---------- */
+  .col2{counter-reset:monto 0 cursos 0}
+  .cursos{display:grid; gap:.45rem}
+  .cursos label{
+    display:flex; align-items:center; gap:.6rem; cursor:pointer; font-weight:500;
+    padding:.5rem .7rem; border-radius:12px; background:rgba(255,255,255,.6);
+    border:2px solid transparent; transition:border-color .2s, box-shadow .2s, background .2s;
+  }
+  .cursos label span{flex:1}
+  .cursos label em{font-style:normal; font-weight:700; font-size:.82rem; color:#14407a}
+  .cursos label:has(input:checked){
+    background:rgba(255,255,255,.9); border-color:var(--celeste);
+    counter-increment:monto 100 cursos 1;
+  }
+  .cursos label:has(input:focus-visible){border-color:var(--neon); box-shadow:0 0 12px var(--neon)}
+
+  /* Monto calculado con contadores CSS (sin JavaScript) */
+  .total{
+    margin:1rem 0; padding:.9rem 1rem; border-radius:14px; text-align:center;
+    background:linear-gradient(135deg,#0b6bff,#00a8e8); color:#fff;
+    box-shadow:0 0 18px rgba(0,217,255,.45);
+  }
+  .total small{display:block; font-weight:600; letter-spacing:.05em; text-transform:uppercase; font-size:.72rem; opacity:.9}
+  .total strong{display:block; font-size:1.8rem; font-weight:800}
+  .total strong::before{content:"S/ " counter(monto) ".00"}
+  .total small.n::after{content:counter(cursos) " de 8 cursos seleccionados"; text-transform:none; letter-spacing:0}
+
+  .turnos{display:flex; flex-wrap:wrap; gap:.5rem 1.2rem}
+
+  /* ---------- Mensajes de error (rojo, debajo de cada casilla) ---------- */
+  .error{display:none; margin-top:.35rem; color:var(--error); font-weight:700; font-size:.8rem}
+  .campo:has(:user-invalid) > .error,
+  .validado .campo:has(:invalid) > .error,
+  .validado .min1:not(:has(:checked)) > .error,
+  .campo:has(#edad[data-bajo]) > .error,
+  .validado .campo:has(#edad:placeholder-shown) > .error{display:block}
+  .campo:has(:user-invalid) input:not([type=radio]):not([type=checkbox]),
+  .validado .campo:has(:invalid) input:invalid{border-color:var(--error)}
+  .e-ce{display:none}
+  .campo:has(#d-ce:checked) .e-ce{display:inline}
+  .campo:has(#d-ce:checked) .e-dni{display:none}
+
+  /* ---------- Botones ---------- */
+  .acciones{display:flex; flex-wrap:wrap; justify-content:center; gap:1rem; margin-top:1.6rem}
+  button{
+    font:inherit; font-weight:700; letter-spacing:.04em; cursor:pointer;
+    padding:.85rem 2.2rem; border-radius:14px; border:2px solid transparent;
+    transition:transform .15s, box-shadow .2s;
+  }
+  button:hover{transform:translateY(-2px)}
+  button:focus-visible{outline:none; box-shadow:0 0 0 3px rgba(0,217,255,.4),0 0 18px var(--neon)}
+  .btn-limpiar{background:rgba(255,255,255,.8); color:var(--azul); border-color:var(--azul)}
+  .btn-matricular{background:linear-gradient(135deg,#0b6bff,#00a8e8); color:#fff; box-shadow:0 6px 20px rgba(11,107,255,.5)}
+
+  /* ---------- Ventana modal ---------- */
+  dialog{
+    border:0; border-radius:24px; padding:2rem 2rem 1.6rem; max-width:min(92vw,460px);
+    text-align:center; color:var(--navy); font-family:inherit;
+    background:linear-gradient(180deg,#fff,#dff1ff);
+    box-shadow:0 0 0 3px var(--neon),0 0 40px rgba(0,217,255,.7);
+  }
+  dialog::backdrop{background:rgba(5,30,80,.55); backdrop-filter:blur(4px)}
+  dialog .ok{width:64px; height:64px; margin:0 auto .8rem; border-radius:50%;
+             background:linear-gradient(135deg,#0b6bff,#00d9ff); color:#fff;
+             font-size:2rem; line-height:64px; font-weight:800}
+  dialog p{font-size:1.1rem; font-weight:600; line-height:1.5; margin:0 0 1.2rem}
+  dialog p strong{color:var(--azul)}
+
+  @media (max-width:820px){ .columnas{grid-template-columns:1fr} }

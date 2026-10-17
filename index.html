@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formulario de Matrícula | ESFAP Eduardo Meza Saravia</title>
+<link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+<video class="fondo" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+  <source src="video/Fondo.mp4" type="video/mp4">
+</video>
+<div class="velo"></div>
+
+<main>
+  <div class="tarjeta">
+
+    <!-- 1.1 Encabezado principal -->
+    <header>
+      <img src="img/logo.png" alt="Logo ESFAP" width="120" height="120">
+      <h1>FORMULARIO DE MATRÍCULA</h1>
+      <p>Escuela Superior de Formación Artística Pública «Eduardo Meza Saravia»</p>
+    </header>
+
+    <form id="matricula" novalidate autocomplete="off">
+      <div class="columnas">
+
+        <!-- 1.2 Columna 1: Datos personales -->
+        <section class="panel">
+          <h2>Datos personales del alumno</h2>
+
+          <fieldset class="campo">
+            <legend>Documento de identidad</legend>
+            <div class="opciones">
+              <label><input type="radio" name="tipodoc" id="d-dni" value="dni" checked> DNI</label>
+              <label><input type="radio" name="tipodoc" id="d-ce" value="ce"> Carnet de Extranjería</label>
+            </div>
+          </fieldset>
+
+          <div class="campo">
+            <label for="documento">Número de documento</label>
+            <input type="text" id="documento" name="documento" inputmode="numeric"
+                   required pattern="\d{8}" maxlength="8" placeholder="8 dígitos">
+            <div class="error">
+              <span class="e-dni">El DNI debe tener exactamente 8 dígitos numéricos.</span>
+              <span class="e-ce">El Carnet de Extranjería debe tener exactamente 9 dígitos numéricos.</span>
+            </div>
+          </div>
+
+          <div class="campo">
+            <label for="nombre">Nombres</label>
+            <input type="text" id="nombre" name="nombre" required autocomplete="given-name"
+                   pattern="[A-Za-zÁÉÍÓÚÜáéíóúüÑñ]+( [A-Za-zÁÉÍÓÚÜáéíóúüÑñ]+)*"
+                   placeholder="Ej. María Fernanda">
+            <div class="error">Ingrese sus nombres completos (solo letras, separados por un espacio).</div>
+          </div>
+
+          <div class="campo">
+            <label for="apellidos">Apellidos</label>
+            <input type="text" id="apellidos" name="apellidos" required autocomplete="family-name"
+                   pattern="[A-Za-zÁÉÍÓÚÜáéíóúüÑñ]+( [A-Za-zÁÉÍÓÚÜáéíóúüÑñ]+)*"
+                   placeholder="Ej. Pérez Gómez">
+            <div class="error">Ingrese sus apellidos completos (solo letras, separados por un espacio).</div>
+          </div>
+
+          <div class="campo">
+            <label for="nacimiento">Fecha de nacimiento</label>
+            <input type="date" id="nacimiento" name="nacimiento" required min="1900-01-01" max="2010-10-01">
+            <div class="error">Debe tener 16 años cumplidos antes del 1 de octubre.</div>
+          </div>
+
+          <div class="campo">
+            <label for="edad">Edad calculada</label>
+            <input type="text" id="edad" readonly tabindex="-1" placeholder="Se calcula automáticamente">
+            <div class="error">La edad debe ser un valor numérico mayor o igual a 16.</div>
+          </div>
+
+          <div class="campo">
+            <label for="celular">Teléfono celular</label>
+            <input type="tel" id="celular" name="celular" inputmode="numeric" required
+                   pattern="9\d{8}" maxlength="9" placeholder="9XXXXXXXX">
+            <div class="error">Debe tener exactamente 9 dígitos y empezar con el dígito 9.</div>
+          </div>
+
+          <div class="campo">
+            <label for="area">Teléfono fijo</label>
+            <div class="fijo">
+              <div>
+                <small>Código</small>
+                <input type="tel" id="area" name="area" inputmode="numeric" required
+                       pattern="\d{2}" maxlength="2" placeholder="01" aria-label="Código de ciudad">
+              </div>
+              <div>
+                <small>Número local</small>
+                <input type="tel" id="local" name="local" inputmode="numeric" required
+                       pattern="\d{7}" maxlength="7" placeholder="7 dígitos" aria-label="Número local">
+              </div>
+            </div>
+            <div class="error">Ingrese el código de ciudad (2 dígitos) y el número local (7 dígitos).</div>
+          </div>
+
+          <fieldset class="campo">
+            <legend>Sexo</legend>
+            <div class="opciones">
+              <label><input type="radio" name="sexo" value="M" required> Masculino</label>
+              <label><input type="radio" name="sexo" value="F" required> Femenino</label>
+            </div>
+            <div class="error">Seleccione una opción.</div>
+          </fieldset>
+
+          <fieldset class="campo">
+            <legend>Colegio de procedencia</legend>
+            <div class="opciones">
+              <label><input type="radio" name="colegio" value="nacional" required> Nacional</label>
+              <label><input type="radio" name="colegio" value="particular" required> Particular</label>
+            </div>
+            <div class="error">Seleccione una opción.</div>
+          </fieldset>
+        </section>
+
+        <!-- 1.3 Columna 2: Datos académicos -->
+        <section class="panel col2">
+          <h2>Datos académicos y cursos</h2>
+
+          <fieldset class="campo min1">
+            <legend>Cursos disponibles · S/ 100.00 c/u</legend>
+            <div class="cursos">
+              <label><input type="checkbox" name="curso" value="1"><span>Dibujo Artístico</span><em>S/ 100.00</em></label>
+              <label><input type="checkbox" name="curso" value="2"><span>Pintura</span><em>S/ 100.00</em></label>
+              <label><input type="checkbox" name="curso" value="3"><span>Teatro</span><em>S/ 100.00</em></label>
+              <label><input type="checkbox" name="curso" value="4"><span>Danza Folklórica</span><em>S/ 100.00</em></label>
+              <label><input type="checkbox" name="curso" value="5"><span>Música</span><em>S/ 100.00</em></label>
+              <label><input type="checkbox" name="curso" value="6"><span>Historia del Arte</span><em>S/ 100.00</em></label>
+              <label><input type="checkbox" name="curso" value="7"><span>Diseño Gráfico Digital</span><em>S/ 100.00</em></label>
+              <label><input type="checkbox" name="curso" value="8"><span>Introducción a la Programación</span><em>S/ 100.00</em></label>
+            </div>
+            <div class="error">Seleccione al menos un curso (máximo 8).</div>
+          </fieldset>
+
+          <!-- Casilla informativa de pago (calculada con CSS) -->
+          <div class="total" aria-live="polite">
+            <small>Monto total a pagar</small>
+            <strong></strong>
+            <small class="n"></small>
+          </div>
+
+          <fieldset class="campo min1">
+            <legend>Turnos de estudio</legend>
+            <div class="turnos">
+              <label><input type="checkbox" name="turno" value="manana"> Mañana</label>
+              <label><input type="checkbox" name="turno" value="tarde"> Tarde</label>
+              <label><input type="checkbox" name="turno" value="noche"> Noche</label>
+            </div>
+            <div class="error">Seleccione al menos un turno de estudio.</div>
+          </fieldset>
+        </section>
+      </div>
+
+      <!-- 1.4 Panel de acciones -->
+      <div class="acciones">
+        <button type="reset" class="btn-limpiar">Limpiar</button>
+        <button type="submit" class="btn-matricular">Matricularse</button>
+      </div>
+    </form>
+  </div>
+</main>
+
+<!-- Ventana modal de confirmación -->
+<dialog id="modal" aria-labelledby="msg">
+  <div class="ok" aria-hidden="true">✓</div>
+  <p id="msg">Sus datos son correctos, usted ha sido matriculado <strong id="alumno"></strong></p>
+  <form method="dialog"><button class="btn-matricular">Aceptar</button></form>
+</dialog>
+
+<!--
+  JavaScript mínimo (solo lo que HTML/CSS no puede hacer):
+  1) cambiar 8/9 dígitos según el tipo de documento, 2) calcular la edad,
+  3) mostrar el nombre en la ventana modal. El resto (validaciones, errores,
+  monto, efectos neón) está resuelto con HTML y CSS.
+-->
+<script>
+  const f = document.getElementById('matricula');
+  const edad = document.getElementById('edad');
+  const nac = f.elements.nacimiento;
+
+  // Edad mínima: 16 años cumplidos antes del 1 de octubre del año actual
+  nac.max = (new Date().getFullYear() - 16) + '-10-01';
+
+  function tipoDocumento() {
+    const n = f.elements.tipodoc.value === 'ce' ? 9 : 8;
+    const d = f.elements.documento;
+    d.pattern = '\\d{' + n + '}';
+    d.maxLength = n;
+    d.placeholder = n + ' dígitos';
+  }
+
+  function calcularEdad() {
+    edad.value = '';
+    edad.removeAttribute('data-bajo');
+    nac.setCustomValidity('');
+    if (!nac.value) return;
+    const [y, m, d] = nac.value.split('-').map(Number);
+    const hoy = new Date();
+    let a = hoy.getFullYear() - y;
+    if (hoy.getMonth() + 1 < m || (hoy.getMonth() + 1 === m && hoy.getDate() < d)) a--;
+    if (a >= 0) edad.value = a + (a === 1 ? ' año' : ' años');
+    if (a < 16) {                       // la edad también debe ser >= 16
+      edad.setAttribute('data-bajo', '');
+      nac.setCustomValidity('Edad mínima: 16 años');
+    }
+  }
+
+  f.elements.tipodoc.forEach(r => r.addEventListener('change', tipoDocumento));
+  nac.addEventListener('input', calcularEdad);
+
+  f.addEventListener('reset', () => setTimeout(() => {
+    f.classList.remove('validado');
+    tipoDocumento();
+    calcularEdad();
+  }));
+
+  f.addEventListener('submit', e => {
+    e.preventDefault();
+    f.classList.add('validado');
+    const malo = f.querySelector('.campo:is(:has(:invalid), .min1:not(:has(:checked)))');
+    if (malo) {
+      malo.scrollIntoView({ block: 'center' });
+      (malo.querySelector(':invalid') || malo.querySelector('input'))?.focus({ preventScroll: true });
+      return;
+    }
+    document.getElementById('alumno').textContent = f.elements.nombre.value.trim() + ' ' + f.elements.apellidos.value.trim();
+    document.getElementById('modal').showModal();
+  });
+</script>
+</body>
+</html>
